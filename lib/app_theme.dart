@@ -68,9 +68,20 @@ class AppTheme {
         ),
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: primary,
+      selectedItemColor: white,
+      unselectedItemColor: white,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primary,
+      elevation: 0,
+      shape: CircleBorder(side: BorderSide(width: 5, color: white)),
+    ),
     textTheme: TextTheme(
       labelSmall:
-          TextStyle(fontSize: 10, fontWeight: FontWeight.w400, color: black),
+          TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: black),
       labelLarge:
           TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: black),
       bodySmall:
