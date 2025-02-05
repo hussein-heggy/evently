@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DefaultTextFormField extends StatefulWidget {
-  TextEditingController controller;
   String hintText;
+  TextEditingController? controller;
   String? prefixIconImageName;
+  void Function(String)? onChanged;
   String? Function(String?)? validator;
   bool isPassword;
   DefaultTextFormField({
-    required this.controller,
     required this.hintText,
+    this.onChanged,
+    this.controller,
     this.validator,
     this.prefixIconImageName,
     this.isPassword = false,
@@ -28,6 +30,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      onChanged: widget.onChanged,
       controller: widget.controller,
       decoration: InputDecoration(
         prefixIcon: widget.prefixIconImageName == null
@@ -37,6 +40,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
                 width: 24,
                 height: 24,
                 fit: BoxFit.scaleDown,
+                colorFilter: ColorFilter.mode(AppTheme.grey, BlendMode.srcIn),
               ),
         suffixIcon: widget.isPassword == true
             ? IconButton(
