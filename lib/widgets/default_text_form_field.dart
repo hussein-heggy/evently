@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class DefaultTextFormField extends StatefulWidget {
   String hintText;
+  int maxLines;
   TextEditingController? controller;
   String? prefixIconImageName;
   void Function(String)? onChanged;
@@ -11,6 +12,7 @@ class DefaultTextFormField extends StatefulWidget {
   bool isPassword;
   DefaultTextFormField({
     required this.hintText,
+    this.maxLines = 1,
     this.onChanged,
     this.controller,
     this.validator,
@@ -32,6 +34,7 @@ class _DefaultTextFormFieldState extends State<DefaultTextFormField> {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       onChanged: widget.onChanged,
       controller: widget.controller,
+      maxLines: widget.maxLines,
       decoration: InputDecoration(
         prefixIcon: widget.prefixIconImageName == null
             ? null
